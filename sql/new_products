@@ -1,0 +1,31 @@
+--QUESTION: Calculate the net change in the number of products launched by companies in 2020 compared to 2019. Your output should include the company names and the net difference.
+(Net difference = Number of products launched in 2020 - The number launched in 2019.)
+Table
+car_launches
+
+--ANSWER:
+SELECT 
+    company_name,
+    COUNT(*) FILTER (WHERE year = 2020) -
+    COUNT(*) FILTER (WHERE year = 2019) AS net_difference
+FROM car_launches
+GROUP BY company_name;
+
+-- INSIGHTS: 
+net_difference > 0:
+   company increased product launches 
+   possible reason:
+      *Expansion
+      *Growth strategy
+      *Strong market position
+
+If net_difference < 0
+   Company reduced launches.
+   Possible reasons:
+      *Cost cutting
+      *Market slowdown
+      *External factors (COVID impact in 2020 👀)
+
+If net_difference = 0
+   Stable product strategy.
+      
